@@ -1,6 +1,7 @@
 import React from 'react';
 import {Button, Card} from "react-bootstrap";
 import FormatCurrency from "../util/FormatCurrency";
+import {useShoppingCart} from "../context/ShopingCartContext";
 
 type StoreItemProps = {
     id:number
@@ -10,8 +11,8 @@ type StoreItemProps = {
 }
 
 const StoreItem = ({id, name, price, imgUrl}:StoreItemProps) => {
-
-    const quantity = 0
+    const {getItemQuantity, increaseCartQuantity, decreaseCartQuantity, removeFromCart} =useShoppingCart()
+    const quantity = getItemQuantity(id)
     return (
         <Card className='h-100' >
             <Card.Img
@@ -28,7 +29,7 @@ const StoreItem = ({id, name, price, imgUrl}:StoreItemProps) => {
                 <div className="mt-auto">
                     {quantity === 0 ? (
                         <Button className="w-100"
-
+                                onClick={() => increaseCartQuantity(id)}
                         >
                             + Add To Cart
                         </Button>
@@ -42,17 +43,17 @@ const StoreItem = ({id, name, price, imgUrl}:StoreItemProps) => {
                                 style={{ gap: ".5rem" }}
                             >
                                 <Button
-
+                                    onClick={() => decreaseCartQuantity(id)}
                                 >-</Button>
                                 <div>
                                     <span className="fs-3">{quantity}</span> in cart
                                 </div>
                                 <Button
-
+                                    onClick={() => increaseCartQuantity(id)}
                                 >+</Button>
                             </div>
                             <Button
-
+                                onClick={() => removeFromCart(id)}
                                 variant="danger"
                                 size="sm"
                             >
