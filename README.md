@@ -1,3 +1,9 @@
+![shopping-cart](https://user-images.githubusercontent.com/90868495/182448147-9e849623-46a4-408e-a97c-602660bc82a5.gif)
+
+Shopping Cart build on TypeScript.\
+[Website link](https://shopping-cart-type-script.netlify.app/)
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
